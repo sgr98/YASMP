@@ -1,8 +1,8 @@
 {
     "about": {
-        "id": "c066578c-c450-4cf9-9122-a55f996e4dc4",
+        "id": "d4e3eef8-5262-4ecb-913c-abeb98fd69c3",
         "name": "User1",
-        "port": "4000",
+        "port": "4001",
         "ip": "0.0.0.0"
     },
     "conversations": { "User2": [], "User3": [], "User4": [] }
