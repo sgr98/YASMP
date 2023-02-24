@@ -1,3 +1,8 @@
 .Contacts {
     background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
 }
