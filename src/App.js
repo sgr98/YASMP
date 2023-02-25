@@ -39,7 +39,7 @@ const App = () => {
         console.log(user);
     };
 
-    const [currentContact, setCurrentContact] = useState('');
+    const [currentContact, setCurrentContact] = useState({});
 
     return (
         <div className="App">

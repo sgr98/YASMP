@@ -1,12 +1,34 @@
-import React from 'react'
-import "./index.css"
+import React from 'react';
+import './index.css';
 
-const Contacts = () => {
-  return (
-    <div className='Contacts'>
-      Contacts
-    </div>
-  )
-}
+const Contacts = ({ contacts, currentContact, setCurrentContact }) => {
+    const handleClick = (contact) => {
+        setCurrentContact(contact);
+        console.log('Current Contact selected to: ', currentContact);
+    };
 
-export default Contacts
+    if (contacts.length === 0) {
+        return <div className="Contacts">Please Select a valid User</div>;
+    } else {
+        return (
+            <div className="Contacts">
+                {contacts.map((contact, ind, arr) => {
+                    return (
+                        <div
+							key={ind}
+                            className="Contacts__contact"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handleClick(contact);
+                            }}
+                        >
+                            {contact.name}
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
+};
+
+export default Contacts;
