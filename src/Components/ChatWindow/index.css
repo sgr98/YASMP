@@ -1,8 +1,191 @@
 .chatwindow {
-    background: red;
+    background: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: stretch;
+    width: 75%;
+    height: 100%;
+}
+
+.chatwindow__empty {
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+/* ********************************
+***********************************
+************ Contact **************
+***********************************
+******************************** */
+
+.chatwindow__contact {
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 11vh;
+    /* background: white; */
+    background-image: linear-gradient(90deg, #4C4F67, #404258);
+    border-bottom: 4px solid black;
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #D8D8D8;
+}
+
+.chatwindow__contact--icon {
+    color: #D8D8D8;
+    font-size: 1.75em;
+    height: auto;
+    padding-right: 20px;
+}
+
+/* ********************************
+***********************************
+************* Chat ****************
+***********************************
+******************************** */
+
+.chatwindow__chat {
+    padding: 10px 10px 0 10px;
+    /* display: block; */
+    /* display: flex; */
+    flex: 1 1 auto;
+    position: relative;
+    bottom: 0;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 100%;
+    height: 100%;
+    background: #F2EAf4;
+    border-bottom: 4px solid black;
+    font-size: 1em;
+    font-weight: 500;
+    color: black;
+    overflow-y: hidden;
+}
+
+@media screen and (min-height: 42vh) {
+    .chatwindow__chat {
+        overflow-y: scroll;
+    }
+}
+
+.chatwindow__chat__combined {
+    margin-bottom: 6px;
+    padding: 4px 14px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: fit-content;
+    max-width: 52vw;
+    height: fit-content;
+    min-height: 25px;
+    /* background: green; */
+    font-size: 0.9em;
+    font-weight: 450;
+    color: black;
+}
+
+.chatwindow__chat__from {
+    margin-left: auto;
+    background: #D0F9D5;
+    border: 1px solid #107A1D;
+    border-right: 4px solid #107A1D;
+}
+
+.chatwindow__chat__to {
+    margin-right: auto;
+    background: #DFF4FF;
+    border: 1px solid #00598A;
+    border-left: 4px solid #00598A;
+}
+
+.chatwindow__chat__date {
+    margin-top: 5px;
+    margin-left: auto;
+    font-size: 0.65em;
+    font-style: italic;
+}
+
+/* ********************************
+***********************************
+************ Message **************
+***********************************
+******************************** */
+
+.chatwindow__message {
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 15vh;
+    background-image: linear-gradient(90deg, #AFB1C5, #E0E1E9);
+    border-bottom: 4px solid black;
+    font-size: 1em;
+    font-weight: 600;
+    color: #D8D8D8;
+}
+
+.chatwindow__message__form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.chatwindow__message__form--input {
+    margin: 0 10px 0 0;
+    padding: 10px 18px;
+    width: 50vw;
+    height: auto;
+    font-size: 1em;
+    border: 2px solid black;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+
+.chatwindow__message__form--submit-button {
+    margin: 0 0 0 10px;
+    padding: 10px 0px 10px 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    height: 100%;
+    width: 8vw;
+    height: auto;
+    background: #54B435;
+    font-size: 1em;
+    border: 2px solid black;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    color: white;
+}
+
+.chatwindow__message__form--submit-button:active {
+    background: #2C742C;
+}
+
+.chatwindow__message__form--submit-button--icon {
+    color: white;
+    font-size: 1.25em;
+    width: auto;
+    height: auto;
 }

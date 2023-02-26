@@ -15,6 +15,7 @@ const App = () => {
     const [username, setUsername] = useState('');
     const [contacts, setContacts] = useState([]);
     const [user, setUser] = useState({});
+    const [currentContact, setCurrentContact] = useState({});
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
@@ -22,6 +23,11 @@ const App = () => {
         const userExists = USERS.some((val) => {
             return val.name === username;
         });
+
+        setContacts([]);
+        setUser({});
+        setCurrentContact({});
+
         if (!userExists) {
             alert('Entered username does not exists!!!');
         } else {
@@ -38,8 +44,6 @@ const App = () => {
         console.log(contacts);
         console.log(user);
     };
-
-    const [currentContact, setCurrentContact] = useState({});
 
     return (
         <div className="App">

@@ -8,7 +8,7 @@ const Contacts = ({ contacts, currentContact, setCurrentContact }) => {
     };
 
     if (contacts.length === 0) {
-        return <div className="Contacts">Please Select a valid User</div>;
+        return <div className="Contacts Contacts__empty">Please enter a valid User</div>;
     } else {
         return (
             <div className="Contacts">

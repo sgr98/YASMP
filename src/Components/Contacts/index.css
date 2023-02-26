@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    /* align-items: center; */
+    /* align-items: center;     */
     width: 25%;
     min-width: 200px;
     height: 100%;
@@ -14,12 +14,16 @@
     border-right: 2px solid black;
 }
 
+.Contacts__empty {
+    align-items: center;
+}
+
 .Contacts__contact {
     margin-bottom: 2px;
     padding-left: 10px;
     display: flex;
-    /*justify-content: center;
-    */align-items: center;
+    /* justify-content: center; */
+    align-items: center;
     width: auto;
     min-height: 40px;
     background: #FFE5F1;
