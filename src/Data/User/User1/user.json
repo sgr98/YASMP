@@ -5,86 +5,101 @@
         "port": "4001",
         "ip": "0.0.0.0"
     },
-    "conversations": { "User2": [
+    "contacts": [
         {
-            "message_id": "",
-            "from": "User1",
-            "to": "User2",
-            "data": {
-                "type": "string",
-                "content": "Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it?"
-            },
-            "datatime": ""
+            "id": "184d6d4c-d1fb-4811-b1d3-955276a56858",
+            "name": "User2",
+            "port": "4002",
+            "ip": "0.0.0.0"
         },
         {
-            "message_id": "",
-            "from": "User2",
-            "to": "User1",
-            "data": {
-                "type": "string",
-                "content": "What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! "
-            },
-            "datatime": ""
+            "id": "f62eec85-eb2d-4473-ac70-6701944f8fa0",
+            "name": "User3",
+            "port": "4003",
+            "ip": "0.0.0.0"
         },
         {
-            "message_id": "",
-            "from": "User1",
-            "to": "User2",
-            "data": {
-                "type": "string",
-                "content": "Did you not hear about it?"
-            },
-            "datatime": ""
-        },
-        {
-            "message_id": "",
-            "from": "User1",
-            "to": "User2",
-            "data": {
-                "type": "string",
-                "content": "Really!!!"
-            },
-            "datatime": ""
-        },
-        {
-            "message_id": "",
-            "from": "User1",
-            "to": "User2",
-            "data": {
-                "type": "string",
-                "content": "Did you not hear about it?"
-            },
-            "datatime": ""
-        },
-        {
-            "message_id": "",
-            "from": "User1",
-            "to": "User2",
-            "data": {
-                "type": "string",
-                "content": "Really!!!"
-            },
-            "datatime": ""
-        },
-        {
-            "message_id": "",
-            "from": "User1",
-            "to": "User2",
-            "data": {
-                "type": "string",
-                "content": "Did you not hear about it?"
-            },
-            "datatime": ""
-        },
-        {
-            "message_id": "",
-            "from": "User1",
-            "to": "User2",
-            "data": {
-                "type": "string",
-                "content": "Really!!!"
-            },
-            "datatime": ""
+            "id": "48755487-0667-4faa-b6de-0eacf7735f9c",
+            "name": "User4",
+            "port": "4004",
+            "ip": "0.0.0.0"
         }
-    ], "User3": [], "User4": [] }
+    ],
+    "conversations": {
+        "User2": [
+            {
+                "message_id": "",
+                "from": "User1",
+                "to": "User2",
+                "data": {
+                    "type": "string",
+                    "content": "Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it?"
+                },
+                "datatime": ""
+            },
+            {
+                "message_id": "",
+                "from": "User2",
+                "to": "User1",
+                "data": {
+                    "type": "string",
+                    "content": "What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! "
+                },
+                "datatime": ""
+            },
+            {
+                "message_id": "",
+                "from": "User1",
+                "to": "User2",
+                "data": {
+                    "type": "string",
+                    "content": "Did you not hear about it?"
+                },
+                "datatime": ""
+            },
+            {
+                "message_id": "",
+                "from": "User1",
+                "to": "User2",
+                "data": { "type": "string", "content": "Really!!!" },
+                "datatime": ""
+            },
+            {
+                "message_id": "",
+                "from": "User1",
+                "to": "User2",
+                "data": {
+                    "type": "string",
+                    "content": "Did you not hear about it?"
+                },
+                "datatime": ""
+            },
+            {
+                "message_id": "",
+                "from": "User1",
+                "to": "User2",
+                "data": { "type": "string", "content": "Really!!!" },
+                "datatime": ""
+            },
+            {
+                "message_id": "",
+                "from": "User1",
+                "to": "User2",
+                "data": {
+                    "type": "string",
+                    "content": "Did you not hear about it?"
+                },
+                "datatime": ""
+            },
+            {
+                "message_id": "",
+                "from": "User1",
+                "to": "User2",
+                "data": { "type": "string", "content": "Really!!!" },
+                "datatime": ""
+            }
+        ],
+        "User3": [],
+        "User4": []
+    }
 }

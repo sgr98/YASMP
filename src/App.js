@@ -4,11 +4,33 @@ import Contacts from './Components/Contacts';
 import ChatWindow from './Components/ChatWindow';
 import './App.css';
 import USERS from './Data/Registry/users.json';
-import USER1CONTACTS from './Data/User/User1/contacts.json';
-import USER1 from './Data/User/User1/user.json';
 
-const getData = (path) => {
-    return require('json-loader!' + path);
+const getJsonPort = (port) => {
+    const prt = parseInt(port);
+    const ind = prt % 4000;
+    return String(3000 + ind);
+};
+
+const getData = async (path) => {
+    // console.log(path)
+    const aboutPath = path + 'about';
+    const contactsPath = path + 'contacts';
+    const conversationsPath = path + 'conversations';
+
+    const aboutRes = await fetch(aboutPath);
+    const contactsRes = await fetch(contactsPath);
+    const conversationsRes = await fetch(conversationsPath);
+
+    const aboutData = await aboutRes.json();
+    const contactsData = await contactsRes.json();
+    const conversationsData = await conversationsRes.json();
+
+    let userSpace = {
+        about: aboutData,
+        contacts: contactsData,
+        conversations: conversationsData,
+    };
+    return userSpace;
 };
 
 const App = () => {
@@ -17,7 +39,7 @@ const App = () => {
     const [user, setUser] = useState({});
     const [currentContact, setCurrentContact] = useState({});
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
 
         const userExists = USERS.some((val) => {
@@ -31,18 +53,18 @@ const App = () => {
         if (!userExists) {
             alert('Entered username does not exists!!!');
         } else {
-            // TODO: Read user file and populate state: contacts and userChat
-            // const contactsPath = './Data/User/' + username + '/contacts.json';
-            // const userPath = './Data/User/' + username + '/user.json';
-            // setContacts(getData(contactsPath))
-            // setUser(getData(userPath))
+            const userPort = USERS.filter((val, ind, arr) => {
+                return val.name === username;
+            });
+            const port = getJsonPort(userPort[0].port);
+            // console.log(port);
 
-            setContacts(USER1CONTACTS);
-            setUser(USER1);
+            const userPath = 'http://localhost:' + port + '/';
+            const userSpace = await getData(userPath);
+            // console.log(userSpace);
+            setContacts(userSpace.contacts);
+            setUser(userSpace);
         }
-
-        console.log(contacts);
-        console.log(user);
     };
 
     return (

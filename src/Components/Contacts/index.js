@@ -4,7 +4,7 @@ import './index.css';
 const Contacts = ({ contacts, currentContact, setCurrentContact }) => {
     const handleClick = (contact) => {
         setCurrentContact(contact);
-        console.log('Current Contact selected to: ', currentContact);
+        // console.log('Current Contact selected to: ', currentContact);
     };
 
     if (contacts.length === 0) {
