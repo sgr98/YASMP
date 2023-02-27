@@ -1,14 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
 
+const getMessage = (msg) => {
+    
+};
+
 export const createMessage = (from, to, content) => {
-    const type = typeof content
+    const msg = getMessage(content);
+    const type = typeof msg;
     let user = {
         message_id: uuidv4(),
         from: from,
         to: to,
         data: {
             type: type,
-            content: content,
+            content: msg,
         },
         datetime: new Date(),
     };
