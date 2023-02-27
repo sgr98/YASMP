@@ -1,15 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoPersonCircleSharp, IoSend } from 'react-icons/io5';
+import { createMessage } from './create_message';
 import './index.css';
 
-const ChatWindow = ({ user, currentContact }) => {
+const getDateStr = (datetime) => {
+    if (typeof datetime === 'object') {
+        let hr = datetime.getHours()
+        let min = datetime.getMinutes()
+        if (hr < 10)
+            hr = "0" + String(hr)
+        if (min < 10)
+            min = "0" + String(min)
+        return hr + ":" + min
+    }
+    return '';
+};
+
+const ChatWindow = ({ user, setUser, currentContact }) => {
     const [message, setMessage] = useState('');
 
     // const currentUser = user.about.name;
 
     const handleSubmitMessage = (e) => {
         e.preventDefault();
+
+        if (
+            !(message === undefined || message === '' || message.trim() === '')
+        ) {
+            const packMessage = createMessage(
+                user.about.name,
+                currentContact.name,
+                message
+            );
+            // console.log(packMessage);
+            user.conversations[currentContact.name] = [
+                ...user.conversations[currentContact.name],
+                packMessage,
+            ];
+            // console.log(user);
+            setUser(user);
+            setMessage("");
+        }
     };
+
+    // useEffect(() => {
+    //     console.log('useEffect');
+    // }, [user.conversations[currentContact.name]]);
 
     if (Object.keys(currentContact).length === 0) {
         return (
@@ -44,7 +80,7 @@ const ChatWindow = ({ user, currentContact }) => {
                                 <div key={ind} className={messageClass}>
                                     {message.data.content}
                                     <div className="chatwindow__chat__date">
-                                        Date Here
+                                        {getDateStr(message.datetime)}
                                     </div>
                                 </div>
                             );

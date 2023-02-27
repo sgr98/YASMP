@@ -82,7 +82,7 @@ const App = () => {
                     currentContact={currentContact}
                     setCurrentContact={setCurrentContact}
                 />
-                <ChatWindow user={user} currentContact={currentContact} />
+                <ChatWindow user={user} setUser={setUser} currentContact={currentContact} />
             </div>
         </div>
     );
