@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const getMessage = (msg) => {
     // TODO
+    return msg;
 };
 
 export const createMessage = (from, to, content) => {

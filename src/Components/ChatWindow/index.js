@@ -5,23 +5,40 @@ import './index.css';
 
 const getDateStr = (datetime) => {
     if (typeof datetime === 'object') {
-        let hr = datetime.getHours()
-        let min = datetime.getMinutes()
-        if (hr < 10)
-            hr = "0" + String(hr)
-        if (min < 10)
-            min = "0" + String(min)
-        return hr + ":" + min
+        let hr = datetime.getHours();
+        let min = datetime.getMinutes();
+        if (hr < 10) hr = '0' + String(hr);
+        if (min < 10) min = '0' + String(min);
+        return hr + ':' + min;
     }
     return '';
+};
+
+const getJsonPort = (port) => {
+    const prt = parseInt(port);
+    const ind = prt % 4000;
+    return String(3000 + ind);
+};
+
+const postData = async (user) => {
+    const port = getJsonPort(user.about.port);
+    const userPath = 'http://localhost:' + port + '/conversations';
+    const res = await fetch(userPath, {
+        method: 'POST',
+        body: JSON.stringify(user.conversations),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    });
+    console.log(res)
+    const data = await res.json();
+    console.log(data);
 };
 
 const ChatWindow = ({ user, setUser, currentContact }) => {
     const [message, setMessage] = useState('');
 
-    // const currentUser = user.about.name;
-
-    const handleSubmitMessage = (e) => {
+    const handleSubmitMessage = async (e) => {
         e.preventDefault();
 
         if (
@@ -32,14 +49,14 @@ const ChatWindow = ({ user, setUser, currentContact }) => {
                 currentContact.name,
                 message
             );
-            // console.log(packMessage);
             user.conversations[currentContact.name] = [
                 ...user.conversations[currentContact.name],
                 packMessage,
             ];
             // console.log(user);
             setUser(user);
-            setMessage("");
+            setMessage('');
+            await postData(user);
         }
     };
 

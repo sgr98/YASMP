@@ -1,105 +1,84 @@
 {
-    "about": {
-        "id": "e5f2d93a-afc5-4e66-814b-b779dae92fe7",
-        "name": "User1",
-        "port": "4001",
-        "ip": "0.0.0.0"
+  "about": {
+    "id": "e5f2d93a-afc5-4e66-814b-b779dae92fe7",
+    "name": "User1",
+    "port": "4001",
+    "ip": "0.0.0.0"
+  },
+  "contacts": [
+    {
+      "id": "184d6d4c-d1fb-4811-b1d3-955276a56858",
+      "name": "User2",
+      "port": "4002",
+      "ip": "0.0.0.0"
     },
-    "contacts": [
-        {
-            "id": "184d6d4c-d1fb-4811-b1d3-955276a56858",
-            "name": "User2",
-            "port": "4002",
-            "ip": "0.0.0.0"
-        },
-        {
-            "id": "f62eec85-eb2d-4473-ac70-6701944f8fa0",
-            "name": "User3",
-            "port": "4003",
-            "ip": "0.0.0.0"
-        },
-        {
-            "id": "48755487-0667-4faa-b6de-0eacf7735f9c",
-            "name": "User4",
-            "port": "4004",
-            "ip": "0.0.0.0"
-        }
-    ],
-    "conversations": {
-        "User2": [
-            {
-                "message_id": "",
-                "from": "User1",
-                "to": "User2",
-                "data": {
-                    "type": "string",
-                    "content": "Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it? Did you hear about it?"
-                },
-                "datetime": ""
-            },
-            {
-                "message_id": "",
-                "from": "User2",
-                "to": "User1",
-                "data": {
-                    "type": "string",
-                    "content": "What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! What! "
-                },
-                "datetime": ""
-            },
-            {
-                "message_id": "",
-                "from": "User1",
-                "to": "User2",
-                "data": {
-                    "type": "string",
-                    "content": "Did you not hear about it?"
-                },
-                "datetime": ""
-            },
-            {
-                "message_id": "",
-                "from": "User1",
-                "to": "User2",
-                "data": { "type": "string", "content": "Really!!!" },
-                "datetime": ""
-            },
-            {
-                "message_id": "",
-                "from": "User1",
-                "to": "User2",
-                "data": {
-                    "type": "string",
-                    "content": "Did you not hear about it?"
-                },
-                "datetime": ""
-            },
-            {
-                "message_id": "",
-                "from": "User1",
-                "to": "User2",
-                "data": { "type": "string", "content": "Really!!!" },
-                "datetime": ""
-            },
-            {
-                "message_id": "",
-                "from": "User1",
-                "to": "User2",
-                "data": {
-                    "type": "string",
-                    "content": "Did you not hear about it?"
-                },
-                "datetime": ""
-            },
-            {
-                "message_id": "",
-                "from": "User1",
-                "to": "User2",
-                "data": { "type": "string", "content": "Really!!!" },
-                "datetime": ""
-            }
-        ],
-        "User3": [],
-        "User4": []
+    {
+      "id": "f62eec85-eb2d-4473-ac70-6701944f8fa0",
+      "name": "User3",
+      "port": "4003",
+      "ip": "0.0.0.0"
+    },
+    {
+      "id": "48755487-0667-4faa-b6de-0eacf7735f9c",
+      "name": "User4",
+      "port": "4004",
+      "ip": "0.0.0.0"
     }
+  ],
+  "conversations": {
+    "User2": [
+      {
+        "message_id": "463e98fa-eccf-4219-b045-5bfeddf2f1e4",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "string",
+          "content": "Hello"
+        },
+        "datetime": "2023-02-27T20:42:20.974Z"
+      },
+      {
+        "message_id": "a3d6688a-b28f-44de-ab8f-2d894d457f8c",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "string",
+          "content": "Are you there"
+        },
+        "datetime": "2023-02-27T20:42:24.056Z"
+      },
+      {
+        "message_id": "4ebf21dc-1d18-42eb-82fb-953845e62664",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "string",
+          "content": "?"
+        },
+        "datetime": "2023-02-27T20:42:26.272Z"
+      },
+      {
+        "message_id": "4d1d3a1c-c582-4f46-9ca5-ad43a177b631",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "string",
+          "content": "Respond to this"
+        },
+        "datetime": "2023-02-27T20:42:34.915Z"
+      },
+      {
+        "message_id": "d077a7b4-0034-4867-8a13-4461f2858c9b",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "string",
+          "content": "No?"
+        },
+        "datetime": "2023-02-28T05:13:26.384Z"
+      }
+    ],
+    "User3": [],
+    "User4": []
+  }
 }
