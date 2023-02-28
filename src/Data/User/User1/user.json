@@ -49,8 +49,8 @@
       },
       {
         "message_id": "87e51a2d-2291-456d-8830-d32775b6e62d",
-        "from": "User1",
-        "to": "User2",
+        "from": "User2",
+        "to": "User1",
         "data": {
           "type": "object",
           "content": [
@@ -79,6 +79,18 @@
           "content": "gfdsgf"
         },
         "datetime": "2023-02-28T06:52:49.584Z"
+      },
+      {
+        "message_id": "6810847b-2163-4a67-a02b-2f0b3137b43c",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "object",
+          "content": {
+            "A": 9
+          }
+        },
+        "datetime": "2023-02-28T07:00:55.337Z"
       }
     ],
     "User3": [],

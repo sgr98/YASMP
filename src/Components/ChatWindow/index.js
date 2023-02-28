@@ -96,6 +96,9 @@ const ChatWindow = ({ user, setUser, currentContact }) => {
                             )
                                 messageClass += 'chatwindow__chat__to';
 
+                            if (message.data.type !== 'string')
+                                messageClass += ' chatwindow__chat__notobject';
+
                             const displayMessageData = parseMessage(message.data)
 
                             return (
