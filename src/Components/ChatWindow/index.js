@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { IoPersonCircleSharp, IoSend } from 'react-icons/io5';
-import { createMessage } from './create_message';
+import { createMessage, parseMessage } from './create_message';
 import './index.css';
 
 const getDateStr = (datetime) => {
+    if (typeof datetime === 'string')
+        datetime = new Date(datetime) 
+
     if (typeof datetime === 'object') {
         let hr = datetime.getHours();
         let min = datetime.getMinutes();
@@ -30,9 +33,9 @@ const postData = async (user) => {
             'Content-type': 'application/json; charset=UTF-8',
         },
     });
-    console.log(res)
+    // console.log(res)
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
 };
 
 const ChatWindow = ({ user, setUser, currentContact }) => {
@@ -54,9 +57,9 @@ const ChatWindow = ({ user, setUser, currentContact }) => {
                 packMessage,
             ];
             // console.log(user);
+            await postData(user);
             setUser(user);
             setMessage('');
-            await postData(user);
         }
     };
 
@@ -93,9 +96,11 @@ const ChatWindow = ({ user, setUser, currentContact }) => {
                             )
                                 messageClass += 'chatwindow__chat__to';
 
+                            const displayMessageData = parseMessage(message.data)
+
                             return (
                                 <div key={ind} className={messageClass}>
-                                    {message.data.content}
+                                    {displayMessageData.content}
                                     <div className="chatwindow__chat__date">
                                         {getDateStr(message.datetime)}
                                     </div>
