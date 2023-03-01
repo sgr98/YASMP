@@ -1,9 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LoginBar from './Components/LoginBar';
 import Contacts from './Components/Contacts';
 import ChatWindow from './Components/ChatWindow';
+
 import './App.css';
 import USERS from './Data/Registry/users.json';
+
+// import worker from './Workers/send.worker.js'
+
+// const loadWebWorker = (worker) => {
+//     const code = worker.toString();
+//     const blob = new Blob(['('+code+')()']);
+//     return new Worker(URL.createObjectURL(blob));
+// }
 
 const getJsonPort = (port) => {
     const prt = parseInt(port);
@@ -34,6 +43,13 @@ const getData = async (path) => {
 };
 
 const App = () => {
+    // Workers
+    // const sendWorker = new window.Worker('./Workers/send.worker.js');
+    // const receiveWorker = new window.Worker('./Workers/receive.worker.js');
+
+    // const wworker = loadWebWorker(worker);
+
+    // State
     const [username, setUsername] = useState('');
     const [contacts, setContacts] = useState([]);
     const [user, setUser] = useState({});
@@ -64,7 +80,13 @@ const App = () => {
             // console.log(userSpace);
             setContacts(userSpace.contacts);
             setUser(userSpace);
+
+            // TODO: Add workers here
+            // Send Worker will be sent as a prop to ChatWindow
+            wworker.postMessage("message")
+
         }
+
     };
 
     return (
@@ -81,6 +103,8 @@ const App = () => {
                     contacts={contacts}
                     currentContact={currentContact}
                     setCurrentContact={setCurrentContact}
+                    // sendWorker={sendWorker}
+                    // receiveWorker={receiveWorker}
                 />
                 <ChatWindow user={user} setUser={setUser} currentContact={currentContact} />
             </div>

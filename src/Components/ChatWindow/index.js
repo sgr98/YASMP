@@ -4,8 +4,7 @@ import { createMessage, parseMessage } from './create_message';
 import './index.css';
 
 const getDateStr = (datetime) => {
-    if (typeof datetime === 'string')
-        datetime = new Date(datetime) 
+    if (typeof datetime === 'string') datetime = new Date(datetime);
 
     if (typeof datetime === 'object') {
         let hr = datetime.getHours();
@@ -34,11 +33,17 @@ const postData = async (user) => {
         },
     });
     // console.log(res)
-    const data = await res.json();
+    // const data = await res.json();
     // console.log(data);
 };
 
-const ChatWindow = ({ user, setUser, currentContact }) => {
+const ChatWindow = ({
+    user,
+    setUser,
+    currentContact,
+    // sendWorker,
+    // receiveWorker,
+}) => {
     const [message, setMessage] = useState('');
 
     const handleSubmitMessage = async (e) => {
@@ -60,6 +65,9 @@ const ChatWindow = ({ user, setUser, currentContact }) => {
             await postData(user);
             setUser(user);
             setMessage('');
+
+            // TODO for using send worker
+            // sendWorker.postMessage(packMessage)
         }
     };
 
@@ -99,7 +107,9 @@ const ChatWindow = ({ user, setUser, currentContact }) => {
                             if (message.data.type !== 'string')
                                 messageClass += ' chatwindow__chat__notobject';
 
-                            const displayMessageData = parseMessage(message.data)
+                            const displayMessageData = parseMessage(
+                                message.data
+                            );
 
                             return (
                                 <div key={ind} className={messageClass}>
