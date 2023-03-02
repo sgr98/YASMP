@@ -6,7 +6,8 @@ import ChatWindow from './Components/ChatWindow';
 import './App.css';
 import USERS from './Data/Registry/users.json';
 
-// import worker from './Workers/send.worker.js'
+// import SendWorker from './Workers/send.worker.js'
+// import ReceiveWorker from './Workers/receive.worker.js'
 
 // const loadWebWorker = (worker) => {
 //     const code = worker.toString();
@@ -46,7 +47,8 @@ const App = () => {
     // Workers
     // const sendWorker = new window.Worker('./Workers/send.worker.js');
     // const receiveWorker = new window.Worker('./Workers/receive.worker.js');
-
+    // const sendWorker = new SendWorker();
+    // const receiveWorker = new ReceiveWorker();
     // const wworker = loadWebWorker(worker);
 
     // State
@@ -83,7 +85,7 @@ const App = () => {
 
             // TODO: Add workers here
             // Send Worker will be sent as a prop to ChatWindow
-            wworker.postMessage("message")
+            // sendWorker.postMessage("message")
 
         }
 
