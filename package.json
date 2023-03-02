@@ -15,7 +15,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "webstart": "webpack-dev-server --mode development --port 6001",
+        "webstart": "webpack-dev-server --mode development",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
@@ -26,7 +26,11 @@
         "u3json": "json-server --watch ./src/Data/User/User3/user.json --port 3003",
         "u3start": "set PORT=4003 && react-scripts start",
         "u4json": "json-server --watch ./src/Data/User/User4/user.json --port 3004",
-        "u4start": "set PORT=4004 && react-scripts start"
+        "u4start": "set PORT=4004 && react-scripts start",
+        "u1webstart": "webpack-dev-server --mode development --port 5001",
+        "u2webstart": "webpack-dev-server --mode development --port 5002",
+        "u3webstart": "webpack-dev-server --mode development --port 5003",
+        "u4webstart": "webpack-dev-server --mode development --port 5004"
     },
     "eslintConfig": {
         "extends": [

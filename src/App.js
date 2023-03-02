@@ -6,14 +6,8 @@ import ChatWindow from './Components/ChatWindow';
 import './App.css';
 import USERS from './Data/Registry/users.json';
 
-// import SendWorker from './Workers/send.worker.js'
-// import ReceiveWorker from './Workers/receive.worker.js'
-
-// const loadWebWorker = (worker) => {
-//     const code = worker.toString();
-//     const blob = new Blob(['('+code+')()']);
-//     return new Worker(URL.createObjectURL(blob));
-// }
+import SendWorker from './Workers/send.worker.js';
+// import ReceiveWorker from './Workers/receive.worker.js';
 
 const getJsonPort = (port) => {
     const prt = parseInt(port);
@@ -45,11 +39,8 @@ const getData = async (path) => {
 
 const App = () => {
     // Workers
-    // const sendWorker = new window.Worker('./Workers/send.worker.js');
-    // const receiveWorker = new window.Worker('./Workers/receive.worker.js');
-    // const sendWorker = new SendWorker();
-    // const receiveWorker = new ReceiveWorker();
-    // const wworker = loadWebWorker(worker);
+    let sendWorker;
+    let receiveWorker;
 
     // State
     const [username, setUsername] = useState('');
@@ -70,6 +61,8 @@ const App = () => {
 
         if (!userExists) {
             alert('Entered username does not exists!!!');
+            sendWorker = null;
+            receiveWorker = null;
         } else {
             const userPort = USERS.filter((val, ind, arr) => {
                 return val.name === username;
@@ -85,10 +78,10 @@ const App = () => {
 
             // TODO: Add workers here
             // Send Worker will be sent as a prop to ChatWindow
-            // sendWorker.postMessage("message")
-
+            sendWorker = new SendWorker();
+            // receiveWorker = new ReceiveWorker();
+            sendWorker.postMessage({ a: 'my message' });
         }
-
     };
 
     return (
@@ -108,7 +101,11 @@ const App = () => {
                     // sendWorker={sendWorker}
                     // receiveWorker={receiveWorker}
                 />
-                <ChatWindow user={user} setUser={setUser} currentContact={currentContact} />
+                <ChatWindow
+                    user={user}
+                    setUser={setUser}
+                    currentContact={currentContact}
+                />
             </div>
         </div>
     );
