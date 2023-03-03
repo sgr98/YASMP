@@ -1,46 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginBar from './Components/LoginBar';
 import Contacts from './Components/Contacts';
 import ChatWindow from './Components/ChatWindow';
 
+import { getData } from './Utilities/get.js';
+import { getJsonPort, getSendURL } from './Utilities/utils.js';
+
 import './App.css';
 import USERS from './Data/Registry/users.json';
 
-import SendWorker from './Workers/send.worker.js';
-// import ReceiveWorker from './Workers/receive.worker.js';
-
-const getJsonPort = (port) => {
-    const prt = parseInt(port);
-    const ind = prt % 4000;
-    return String(3000 + ind);
-};
-
-const getData = async (path) => {
-    // console.log(path)
-    const aboutPath = path + 'about';
-    const contactsPath = path + 'contacts';
-    const conversationsPath = path + 'conversations';
-
-    const aboutRes = await fetch(aboutPath);
-    const contactsRes = await fetch(contactsPath);
-    const conversationsRes = await fetch(conversationsPath);
-
-    const aboutData = await aboutRes.json();
-    const contactsData = await contactsRes.json();
-    const conversationsData = await conversationsRes.json();
-
-    let userSpace = {
-        about: aboutData,
-        contacts: contactsData,
-        conversations: conversationsData,
-    };
-    return userSpace;
-};
+import ReceiveWorker from './Workers/receive.worker.js';
 
 const App = () => {
-    // Workers
-    let sendWorker;
-    let receiveWorker;
+    // const documentURI = document.documentURI
+    // console.log(documentURI)
+
+    // TODO: Workers
+    const receiveWorker = new ReceiveWorker();
+    // receiveWorker.postMessage("receive")
 
     // State
     const [username, setUsername] = useState('');
@@ -61,8 +38,6 @@ const App = () => {
 
         if (!userExists) {
             alert('Entered username does not exists!!!');
-            sendWorker = null;
-            receiveWorker = null;
         } else {
             const userPort = USERS.filter((val, ind, arr) => {
                 return val.name === username;
@@ -70,17 +45,11 @@ const App = () => {
             const port = getJsonPort(userPort[0].port);
             // console.log(port);
 
-            const userPath = 'http://localhost:' + port + '/';
+            const userPath = getSendURL('http://localhost', port);
             const userSpace = await getData(userPath);
             // console.log(userSpace);
             setContacts(userSpace.contacts);
             setUser(userSpace);
-
-            // TODO: Add workers here
-            // Send Worker will be sent as a prop to ChatWindow
-            sendWorker = new SendWorker();
-            // receiveWorker = new ReceiveWorker();
-            sendWorker.postMessage({ a: 'my message' });
         }
     };
 
@@ -98,8 +67,6 @@ const App = () => {
                     contacts={contacts}
                     currentContact={currentContact}
                     setCurrentContact={setCurrentContact}
-                    // sendWorker={sendWorker}
-                    // receiveWorker={receiveWorker}
                 />
                 <ChatWindow
                     user={user}

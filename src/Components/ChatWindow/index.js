@@ -1,49 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { IoPersonCircleSharp, IoSend } from 'react-icons/io5';
 import { createMessage, parseMessage } from './create_message';
+
+import { postData, sendMessage } from './../../Utilities/post.js'
+import { getDateStr } from './../../Utilities/utils.js'
+
 import './index.css';
 
-const getDateStr = (datetime) => {
-    if (typeof datetime === 'string') datetime = new Date(datetime);
-
-    if (typeof datetime === 'object') {
-        let hr = datetime.getHours();
-        let min = datetime.getMinutes();
-        if (hr < 10) hr = '0' + String(hr);
-        if (min < 10) min = '0' + String(min);
-        return hr + ':' + min;
-    }
-    return '';
-};
-
-const getJsonPort = (port) => {
-    const prt = parseInt(port);
-    const ind = prt % 4000;
-    return String(3000 + ind);
-};
-
-const postData = async (user) => {
-    const port = getJsonPort(user.about.port);
-    const userPath = 'http://localhost:' + port + '/conversations';
-    const res = await fetch(userPath, {
-        method: 'POST',
-        body: JSON.stringify(user.conversations),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    });
-    // console.log(res)
-    // const data = await res.json();
-    // console.log(data);
-};
+// import SendWorker from './../../Workers/send.worker.js';
 
 const ChatWindow = ({
     user,
     setUser,
     currentContact,
-    // sendWorker,
-    // receiveWorker,
 }) => {
+    // TODO: Workers
+    // const sendWorker = new SendWorker();
+
     const [message, setMessage] = useState('');
 
     const handleSubmitMessage = async (e) => {
@@ -62,12 +35,14 @@ const ChatWindow = ({
                 packMessage,
             ];
             // console.log(user);
+
+            // TODO: for using send worker
+            // sendWorker.postMessage(packMessage)
+            // await sendMessage(packMessage, currentContact)
+
             await postData(user);
             setUser(user);
             setMessage('');
-
-            // TODO for using send worker
-            // sendWorker.postMessage(packMessage)
         }
     };
 
