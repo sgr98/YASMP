@@ -36,9 +36,43 @@
           "content": "safdfda"
         },
         "datetime": "2023-03-03T10:07:39.568Z"
+      },
+      {
+        "message_id": "24252b6f-668b-4073-a95b-cf2a20fd1608",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "string",
+          "content": "fdsafdafd"
+        },
+        "datetime": "2023-03-04T18:55:05.081Z"
       }
     ],
     "User3": [],
-    "User4": []
+    "User4": [
+      {
+        "message_id": "eac9a122-2176-429f-9c5b-a65b31196181",
+        "from": "User1",
+        "to": "User4",
+        "data": {
+          "type": "string",
+          "content": "fdsafdsa"
+        },
+        "datetime": "2023-03-04T18:55:10.982Z"
+      },
+      {
+        "message_id": "def8e2aa-f497-44ca-a53d-f81b4f47512e",
+        "from": "User1",
+        "to": "User4",
+        "data": {
+          "type": "object",
+          "content": [
+            "1",
+            5
+          ]
+        },
+        "datetime": "2023-03-04T18:55:23.067Z"
+      }
+    ]
   }
 }

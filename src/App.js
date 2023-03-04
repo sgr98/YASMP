@@ -9,15 +9,17 @@ import { getJsonPort, getSendURL } from './Utilities/utils.js';
 import './App.css';
 import USERS from './Data/Registry/users.json';
 
-import ReceiveWorker from './Workers/receive.worker.js';
+// import ReceiveWorker from './Workers/receive.worker.js';
 
 const App = () => {
     // const documentURI = document.documentURI
     // console.log(documentURI)
 
     // TODO: Workers
-    const receiveWorker = new ReceiveWorker();
-    // receiveWorker.postMessage("receive")
+    // useEffect(() => {
+    //     const receiveWorker = new ReceiveWorker();
+    //     receiveWorker.postMessage("receive")
+    // }, [])
 
     // State
     const [username, setUsername] = useState('');
