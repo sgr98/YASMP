@@ -27,6 +27,16 @@
   ],
   "conversations": {
     "User1": [
+      {
+        "message_id": "61d83ffa-946e-4e1a-a94b-9f7611a01e95",
+        "from": "User1",
+        "to": "User2",
+        "data": {
+          "type": "string",
+          "content": "Hello"
+        },
+        "datetime": "2023-03-06T08:30:35.984Z"
+      }
     ],
     "User3": [],
     "User4": []
