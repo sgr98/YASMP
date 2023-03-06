@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { getJsonPort, getSendURL } from './utils.js';
 
 export const postData = async (user) => {
@@ -17,7 +18,7 @@ export const postData = async (user) => {
 
 export const packRPCMessage = (func, message) => {
     const packMessage = {
-        functions: func,
+        func: func,
         params: {
             message: message,
         },
@@ -26,13 +27,35 @@ export const packRPCMessage = (func, message) => {
 };
 
 export const sendMessage = async (message, contact) => {
-    const sendURL = getSendURL('http://localhost', contact.port, ['listener']);
-    const packMessage = packRPCMessage(func, message);
+    const contactPort = getJsonPort(contact.port, 5);
+    const sendURL = getSendURL('http://localhost', contactPort, ['listener']);
+    const packMessage = packRPCMessage("SEND_MESSAGE", message);
     const res = await fetch(sendURL, {
         method: 'POST',
-        body: message,
+        body: packMessage,
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            'Content-type': 'application/json',
         },
     });
+    console.log(res)
+};
+
+export const sendMessageAxios = async (message, contact) => {
+    const contactPort = getJsonPort(contact.port, 5);
+    const sendURL = getSendURL('http://localhost', contactPort, ['listener']);
+    const packMessage = packRPCMessage("SEND_MESSAGE", message);
+
+    // const res = await fetch(sendURL, {
+    //     method: 'POST',
+    //     body: packMessage,
+    //     headers: {
+    //         'Content-type': 'application/json',
+    //     },
+    // });
+    // console.log(res)
+
+    const sendURLAxios = getSendURL('http://localhost', contactPort);
+    const API = axios.create({ baseURL: sendURLAxios });
+    const postMessageAPI = (messageBody) => API.post('/listener', messageBody);
+    await postMessageAPI(packMessage);
 };

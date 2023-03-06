@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { IoPersonCircleSharp, IoSend } from 'react-icons/io5';
 import { createMessage, parseMessage } from './create_message';
 
-import { postData, sendMessage } from './../../Utilities/post.js'
-import { getDateStr } from './../../Utilities/utils.js'
+import {
+    postData,
+    sendMessage,
+    sendMessageAxios,
+} from './../../Utilities/post.js';
+import { getDateStr } from './../../Utilities/utils.js';
 
 import './index.css';
 
 // import SendWorker from './../../Workers/send.worker.js';
 
-const ChatWindow = ({
-    user,
-    setUser,
-    currentContact,
-}) => {
+const ChatWindow = ({ user, setUser, currentContact }) => {
     // TODO: Workers
     // const sendWorker = new SendWorker();
 
@@ -38,7 +38,8 @@ const ChatWindow = ({
 
             // TODO: for using send worker
             // sendWorker.postMessage(packMessage)
-            // await sendMessage(packMessage, currentContact)
+            // await sendMessage(packMessage, currentContact);
+            await sendMessageAxios(packMessage, currentContact);
 
             await postData(user);
             setUser(user);

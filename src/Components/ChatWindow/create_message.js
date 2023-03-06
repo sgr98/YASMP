@@ -35,7 +35,6 @@ export const createMessage = (from, to, content) => {
 };
 
 export const parseMessage = (message_data) => {
-    // TODO: USE deepcopy
     let newMessageData = JSON.parse(JSON.stringify(message_data));
     newMessageData = encodeMessage(newMessageData);
     return newMessageData;
