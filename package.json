@@ -32,7 +32,12 @@
         "u1webstart": "webpack-dev-server --mode development --port 4001",
         "u2webstart": "webpack-dev-server --mode development --port 4002",
         "u3webstart": "webpack-dev-server --mode development --port 4003",
-        "u4webstart": "webpack-dev-server --mode development --port 4004"
+        "u4webstart": "webpack-dev-server --mode development --port 4004",
+        "u1all": "concurrently \"npm run u1start\" \"npm run u1json\"",
+        "u2all": "concurrently \"npm run u2start\" \"npm run u2json\"",
+        "u3all": "concurrently \"npm run u3start\" \"npm run u3json\"",
+        "u4all": "concurrently \"npm run u4start\" \"npm run u4json\"",
+        "uconc": "concurrently \"npm run u1all\" \"npm run u2all\" \"npm run u3all\" \"npm run u4all\""
     },
     "eslintConfig": {
         "extends": [
@@ -58,6 +63,7 @@
         "@babel/preset-react": "^7.18.6",
         "@svgr/webpack": "^6.5.1",
         "babel-loader": "^9.1.2",
+        "concurrently": "^7.6.0",
         "css-loader": "^6.7.3",
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.5.0",
